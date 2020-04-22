@@ -2,18 +2,13 @@ pipeline {
     agent any
     stages {
         
-         stage('Example Deploy') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo 'Deploying master'
-            }
-        }
+         
         
         stage('Deploy to dev') {
            steps {
                echo " ${env.BRANCH_NAME} Branch Dev"
+               
+               checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubmvn', url: 'https://github.com/sansiva/PerlProject.git']]])
             }
         }
     
