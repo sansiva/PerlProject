@@ -1,6 +1,16 @@
 pipeline {
     agent any
     stages {
+        
+         stage('Example Deploy') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo 'Deploying master'
+            }
+        }
+        
         stage('Deploy to dev') {
            steps {
                echo " ${env.BRANCH_NAME} Branch Dev"
