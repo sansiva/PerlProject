@@ -5,8 +5,8 @@ agent any
         stage('Checkout code') {
             steps {
                 
-            git branch:  'dev'
-            checkout scm
+            checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubmvn', url: 'https://github.com/sansiva/PerlProject.git']]])
+            
             }
         }
     }
