@@ -5,7 +5,7 @@ agent any
         stage('Checkout code') {
             steps {
                 
-            git branch dev
+            git branch:  'dev'
             checkout scm
             }
         }
